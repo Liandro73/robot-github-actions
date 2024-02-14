@@ -5,25 +5,21 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Robot Framework
+      uses: joonvena/robotframework-docker-action@v1.0
+      with:
+        robot_reports_dir: 'logs'
 
-      - name: Install python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+    - name: Run test
+      run: robot -d logs tests/
 
-      - name: Install Chrome, Firefox and Git on OS
-        uses: shreyash-Pandey-Katni/Chrome-Firefox-git-install-action@v2
-        with:
-          chrome: true
-          firefox: true
-          git: false
-
-      - name: Install packages in requirements.txt
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run test
-        run: robot -d logs tests/
+    - name: Upload Test Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: logs
+        path: |
+          /logs/output.xml
+          /logs/robotframework/reports/log.html
+          /logs/robotframework/reports/report.html
