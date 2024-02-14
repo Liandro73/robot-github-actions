@@ -14,11 +14,11 @@ jobs:
           python-version: '3.10'
 
       - name: Install Chrome, Firefox and Git on OS
-      uses: shreyash-Pandey-Katni/Chrome-Firefox-git-install-action@v2
-      with:
-        chrome: true
-        firefox: true
-        git: false
+        uses: shreyash-Pandey-Katni/Chrome-Firefox-git-install-action@v2
+        with:
+          chrome: true
+          firefox: true
+          git: false
 
       - name: Install packages in requirements.txt
         run: |
