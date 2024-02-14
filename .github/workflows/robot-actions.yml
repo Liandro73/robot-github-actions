@@ -14,10 +14,10 @@ jobs:
           python-version: '3.10'
 
       - name: Setup Chrome
-        uses: abhi1693/setup-browser@v0.3.4
-        with:
-          browser: chrome
-          version: latest
+        run: |
+          VERSION_STRING="88.0.4324.96-1"
+          wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${VERSION_STRING}_amd64.deb"
+          sudo dpkg -i "google-chrome-stable_${VERSION_STRING}_amd64.deb"
 
       - name: Install packages in requirements.txt
         run: |
