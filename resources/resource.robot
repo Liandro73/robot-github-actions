@@ -1,6 +1,5 @@
 *** Settings ***
 Library                                SeleniumLibrary
-Library                                ../configs/core/chromedriversync.py
 Resource                               ../configs/global.robot
 Resource                               ../configs/users.robot
 Resource                               ../configs/environments.robot
@@ -22,15 +21,18 @@ Setup Selenium
     Set Screenshot Directory           ./screenshots
 
 Open Browser Chrome Parametrized
-    ${chromedriver_path}=              Get Chromedriver Path
-    ${CHROME_OPTIONS}=                 Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()     sys, selenium.webdriver
+    ${driverpath}=                     Evaluate   
+    ...   webdriver_manager.chrome.ChromeDriverManager().install()    
+    ...   modules=webdriver_manager.chrome
+    ${CHROME_OPTIONS}=                 Evaluate    
+    ...    sys.modules['selenium.webdriver'].ChromeOptions()     
+    ...    sys, selenium.webdriver
     Call Method                        ${CHROME_OPTIONS}     add_argument    --ignore-certificate-errors
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-extensions
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
     Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
-    ${driverpath}=    Evaluate    webdriver_manager.chrome.ChromeDriverManager().install()    modules=webdriver_manager.chrome
 	Open Browser 	${URL}    Chrome      executable_path=${driverpath}     options=${CHROME_OPTIONS}
 
 Scroll To Element
