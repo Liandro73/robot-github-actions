@@ -23,14 +23,15 @@ Setup Selenium
 Open Browser Chrome Parametrized
     ${chromedriver_path}=              Get Chromedriver Path
     Log To Console                     ${chromedriver_path}
-    ${CHROME_OPTIONS}=                 Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()     sys, selenium.webdriver
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --ignore-certificate-errors
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-extensions
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
-    Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
-    Create Webdriver                   Chrome                ${chromedriver_path}
+    ${CHROME_OPTIONS}=    Evaluate    webdriver_manager.chrome.ChromeDriverManager().install()    modules=webdriver_manager.chrome
+    # ${CHROME_OPTIONS}=                 Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()     sys, selenium.webdriver
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --ignore-certificate-errors
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-extensions
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
+    # Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
+    Create Webdriver                   Chrome                ${CHROME_OPTIONS}
 
 Scroll To Element
     [Arguments]                        ${locator}
