@@ -1,9 +1,9 @@
 *** Settings ***
 Library                                SeleniumLibrary
+Library                                ../configs/core/chromedriversync.py
 Resource                               ../../configs/global.robot
 Resource                               ../../configs/users.robot
 Resource                               ../../configs/environments.robot
-Resource                               ../resource.robot
 
 *** Variables ***
 ${LOGO_SWAG_LABS}                      class=login_logo
