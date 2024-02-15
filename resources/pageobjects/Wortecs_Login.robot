@@ -1,6 +1,6 @@
 *** Settings ***
 Library                                SeleniumLibrary
-Library                                ../configs/core/chromedriversync.py
+Library                                ../../configs/core/chromedriversync.py
 Resource                               ../../configs/global.robot
 Resource                               ../../configs/users.robot
 Resource                               ../../configs/environments.robot
