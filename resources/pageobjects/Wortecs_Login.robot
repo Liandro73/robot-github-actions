@@ -3,6 +3,7 @@ Library                                SeleniumLibrary
 Resource                               ../../configs/global.robot
 Resource                               ../../configs/users.robot
 Resource                               ../../configs/environments.robot
+Resource                               ../resource.robot
 
 *** Variables ***
 ${LOGO_SWAG_LABS}                      class=login_logo
@@ -12,6 +13,8 @@ ${BTN_LOGIN}                           login-button
 
 *** Keywords ***
 Given that I go to the do Swag Labs login page
+    ${chromedriver_path}=    Get Chromedriver Path
+    Create Webdriver    Chrome         ${chromedriver_path}
     Go To                              ${URL}
     Wait Until Element Is Visible      ${LOGO_SWAG_LABS}
 

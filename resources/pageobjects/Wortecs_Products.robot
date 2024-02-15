@@ -3,6 +3,7 @@ Library                                SeleniumLibrary
 Resource                               ../../configs/global.robot
 Resource                               ../../configs/users.robot
 Resource                               ../../configs/environments.robot
+Resource                               ../resource.robot
 
 *** Variables ***
 ${ICON_PRODUCTS_PAGE}                  class=app_logo
