@@ -2,7 +2,7 @@ name: Web automated testing with Robot Framework and GitHub Actions
 run-name: Pipeline Robot Framework
 on: [push]
 jobs:
-  example-job:
+  environment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,9 +21,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+  tests:
       - name: Run test
         run: robot -d logs tests/
 
+  artifacts:
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v2
         with:
