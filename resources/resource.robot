@@ -29,7 +29,7 @@ Open Browser Chrome Parametrized
     ...    sys, selenium.webdriver
     Call Method                        ${CHROME_OPTIONS}     add_argument    --ignore-certificate-errors
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-extensions
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
     Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
