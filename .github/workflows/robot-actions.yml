@@ -22,10 +22,12 @@ jobs:
           pip install -r requirements.txt
 
   tests:
+    steps:
       - name: Run test
         run: robot -d logs tests/
 
   artifacts:
+    steps:
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v2
         with:
