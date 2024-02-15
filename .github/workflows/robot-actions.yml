@@ -29,6 +29,6 @@ jobs:
         with:
           name: logs
           path: |
-            /logs/reports/output.xml
-            /logs/reports/log.html
-            /logs/reports/report.html
+            /logs/output.xml
+            /logs/log.html
+            /logs/report.html
