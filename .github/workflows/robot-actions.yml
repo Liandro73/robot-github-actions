@@ -23,3 +23,12 @@ jobs:
 
       - name: Run test
         run: robot -d logs tests/
+
+      - name: Upload Test Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: |
+            /logs/reports/output.xml
+            /logs/reports/log.html
+            /logs/reports/report.html
