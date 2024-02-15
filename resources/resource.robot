@@ -29,8 +29,7 @@ Open Browser Chrome Parametrized
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
     Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
     Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
-    Create Webdriver                   Chrome                ${chromedriver_path}    chrome_options=${CHROME_OPTIONS}
-    Open Browser                       browser=${BROWSER}
+    Create Webdriver                   Chrome                chrome_options=${CHROME_OPTIONS}   executable_path=${chromedriver_path}
 
 Scroll To Element
     [Arguments]                        ${locator}
