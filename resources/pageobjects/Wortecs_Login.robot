@@ -1,6 +1,5 @@
 *** Settings ***
 Library                                SeleniumLibrary
-Library                                ../../configs/core/chromedriversync.py
 Resource                               ../../configs/global.robot
 Resource                               ../../configs/users.robot
 Resource                               ../../configs/environments.robot
@@ -13,8 +12,6 @@ ${BTN_LOGIN}                           login-button
 
 *** Keywords ***
 Given that I go to the do Swag Labs login page
-    ${chromedriver_path}=    Get Chromedriver Path
-    Create Webdriver    Chrome         ${chromedriver_path}
     Go To                              ${URL}
     Wait Until Element Is Visible      ${LOGO_SWAG_LABS}
 

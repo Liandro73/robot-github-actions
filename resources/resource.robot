@@ -1,5 +1,6 @@
 *** Settings ***
 Library                                SeleniumLibrary
+Library                                ../configs/core/chromedriversync.py
 Resource                               ../configs/global.robot
 Resource                               ../configs/users.robot
 
@@ -9,8 +10,8 @@ Resource                               ../configs/users.robot
 *** Keywords ***
 Setup
     Setup Selenium
-    # Open Browser Chrome Parametrized
-    # Maximize Browser Window
+    Open Browser Chrome Parametrized
+    Maximize Browser Window
 
 Tear Down
     Close Browser
@@ -20,14 +21,15 @@ Setup Selenium
     Set Screenshot Directory           ./screenshots
 
 Open Browser Chrome Parametrized
-    # ${CHROME_OPTIONS}=                 Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()     sys, selenium.webdriver
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --ignore-certificate-errors
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-extensions
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
-    # Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
-    # Create Webdriver                   Chrome                chrome_options=${CHROME_OPTIONS}
+    ${chromedriver_path}=              Get Chromedriver Path
+    ${CHROME_OPTIONS}=                 Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()     sys, selenium.webdriver
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --ignore-certificate-errors
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-extensions
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --headless
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-gpu
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --disable-dev-shm-usage
+    Call Method                        ${CHROME_OPTIONS}     add_argument    --no-sandbox
+    Create Webdriver                   Chrome                ${chromedriver_path}    chrome_options=${CHROME_OPTIONS}
     Open Browser                       browser=${BROWSER}
 
 Scroll To Element
