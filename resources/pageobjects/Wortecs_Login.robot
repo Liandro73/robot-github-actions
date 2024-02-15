@@ -12,7 +12,6 @@ ${BTN_LOGIN}                           login-button
 
 *** Keywords ***
 Given that I go to the do Swag Labs login page
-    Go To                              ${URL}
     Wait Until Element Is Visible      ${LOGO_SWAG_LABS}
 
 When fill user and password fields
